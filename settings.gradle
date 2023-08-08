@@ -1,0 +1,48 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://developer.huawei.com/repo/' }
+        flatDir {
+            dirs 'libs'
+        }
+        maven {
+            url 'https://api.mapbox.com/downloads/v2/releases/maven'
+            authentication {
+                basic(BasicAuthentication)
+            }
+            credentials {
+                username = 'mapbox'
+                // Use the secret token you stored in gradle.properties as the password
+                password = 'sk.eyJ1IjoiYWxlcGhyaSIsImEiOiJja2lleDJqZDgxeGhjMnRudjk5bm1iOWlqIn0.kQLjhL0fA-dbIyjDJv6IPA'
+            }
+        }
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://developer.huawei.com/repo/' }
+        flatDir {
+            dirs 'libs'
+        }
+        maven {
+            url 'https://api.mapbox.com/downloads/v2/releases/maven'
+            authentication {
+                basic(BasicAuthentication)
+            }
+            credentials {
+                username = 'mapbox'
+                // Use the secret token you stored in gradle.properties as the password
+                password = 'sk.eyJ1IjoiYWxlcGhyaSIsImEiOiJja2lleDJqZDgxeGhjMnRudjk5bm1iOWlqIn0.kQLjhL0fA-dbIyjDJv6IPA'
+            }
+        }
+    }
+}
+rootProject.name = "ParvadaClone"
+include ':app'

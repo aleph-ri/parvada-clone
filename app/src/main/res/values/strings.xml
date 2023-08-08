@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ParvadaClone</string>
+    <string name="mapbox_access_token">pk.eyJ1IjoiYWxlcGhyaSIsImEiOiJja2lleDdxN2kwNWlrMnpvNzhlM2dueXlmIn0.XK-yXRCjgkwPPp3TPn78-w</string>
+</resources>
