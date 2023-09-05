@@ -37,19 +37,9 @@ Esta función nos permite a través de un identificador poder obtener los datos 
 Nos regresa un flow del tipo Boolean, con el cual sabremos si el inicio de sesión ha sido exitoso o no.
 
 ```
-alephSDK.login(email = "ofernandez@alephri.com").collect{
-when (it) {
-        is State.Success -> {
-            Log.d("Success", "Success ${it.data}")
-        }
-        is State.Failure -> {
-            Log.d("Failure", "Error ${it.exception}")
-        }
-        is State.Progress -> {
-            // Show a Loader
-        }
-    }
-}
+// Esto genera un correo dentro de Aleph para poder ser visto en la consola, inicia el tracking del usuario y manda su primer lectura de datos para ser visualizado correctamente
+// Si el usuario ya está registrado y se llama esta función, solamente se ejecutará el login, no se creará ni modificará el usuario ya creado con anterioridad.
+alephSDK.login(userName = "ofernandez")
 ```
 
 # Router
