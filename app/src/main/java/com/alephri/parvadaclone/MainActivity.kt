@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var notificationByIdButton: Button
     lateinit var notificationsButton: Button
 
-    private val alephSDK = AlephSDK(this, apiKey = "1010101010101")
+    private val alephSDK = AlephSDK(this, apiKey = "RFh4DsMud6PsT7VHArgPYRRH")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,19 +33,7 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         loginButton.setOnClickListener {
             MainScope().launch {
-                alephSDK.login(email = "ofernandez@alephri.com", password = "password").collect {
-                    when (it) {
-                        is State.Success -> {
-                            Log.d("Success", "Token ${it.data}")
-                        }
-                        is State.Failure -> {
-                            Log.d("Failure", "Error ${it.exception}")
-                        }
-                        is State.Progress -> {
-                            Log.d("Progress", "Is Loading")
-                        }
-                    }
-                }
+                alephSDK.login(userName = "ofernandez123")
             }
         }
         riskRouteButton.setOnClickListener {
