@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         loginButton.setOnClickListener {
             MainScope().launch {
-                alephSDK.login(userName = "ofernandez123")
+                alephSDK.login(userName = "OFRH")
             }
         }
         riskRouteButton.setOnClickListener {
