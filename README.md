@@ -37,9 +37,19 @@ Esta función nos permite a través de un identificador poder obtener los datos 
 Nos regresa un flow del tipo Boolean, con el cual sabremos si el inicio de sesión ha sido exitoso o no.
 
 ```
-// Esto genera un correo dentro de Aleph para poder ser visto en la consola, inicia el tracking del usuario y manda su primer lectura de datos para ser visualizado correctamente
-// Si el usuario ya está registrado y se llama esta función, solamente se ejecutará el login, no se creará ni modificará el usuario ya creado con anterioridad.
-alephSDK.login(userName = "ofernandez")
+alephSDK.login(email = "ofernandez@alephri.com").collect{
+when (it) {
+        is State.Success -> {
+            Log.d("Success", "Success ${it.data}")
+        }
+        is State.Failure -> {
+            Log.d("Failure", "Error ${it.exception}")
+        }
+        is State.Progress -> {
+            // Show a Loader
+        }
+    }
+}
 ```
 
 # Router
@@ -121,7 +131,38 @@ when (it) {
 
 # Tracking
 
-La funcionalidad de tracking está implementada desde que se hace login con un usuario en particular, no es necesario hacer nada más.
+<del>La funcionalidad de tracking está implementada desde que se hace login con un usuario en particular, no es necesario hacer nada más.</del>
+
+La funcionalidad de tracking se ha desacoplado de la función de login, ahora es una función separada, a fin de tener control sobre el momento de pedir permisos e iniciar el tracking
+
+#### Pedir permisos
+
+* Es necesario ahora pedir permisos de ubicación de la siguiente manera (esto no afecta a anteriores integraciones)
+
+```jsx
+alephSDK.requestPermissions()
+```
+
+Para hacer uso de todas las funcionales del SDK es necesario que se pida y otorgue permisos de ubicación para siempre, por lo cual es necesario que en nuestra activity donde pedimos los permisos de ubicación sobreescribir el método onRequestPermissionsResult, y si ya lo tenemos, simplemente agregar estas líneas de código:
+
+```jsx
+ if (requestCode == AlephSDK.PERMISSION_REQUEST_ACCESS_LOCATION) {
+        if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                alephSDK.requestAlwaysPermissions()
+        }
+}
+```
+
+### Iniciar el trackeo
+
+Tenemos que asegurarnos de haber pedido ya los permisos de ubicación, y podremos iniciar el evento de trackeo con solo esta línea
+
+```jsx
+alephSDK.initTracking(context = this)
+```
+
+donde this, es un objeto context
+
 
 ## Aceptar un trackeo
 
