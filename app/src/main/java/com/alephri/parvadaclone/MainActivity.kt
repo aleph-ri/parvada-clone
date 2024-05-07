@@ -1,6 +1,7 @@
 package com.alephri.parvadaclone
 
 import android.content.Intent
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -33,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         loginButton.setOnClickListener {
             MainScope().launch {
-                alephSDK.login(userName = "OFRH")
+                alephSDK.login(userName = "osmifelo")
             }
         }
         riskRouteButton.setOnClickListener {
@@ -72,6 +73,21 @@ class MainActivity : AppCompatActivity() {
                         }
                     }
                 }
+            }
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == AlephSDK.PERMISSION_REQUEST_ACCESS_LOCATION) {
+            if (grantResults.isNotEmpty()
+                && grantResults[0] == PackageManager.PERMISSION_GRANTED
+            ) {
+                alephSDK.requestAlwaysPermissions()
             }
         }
     }
