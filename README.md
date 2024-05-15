@@ -164,8 +164,8 @@ alephSDK.initTracking(context = this)
 donde this, es un objeto context
 
 
-## Aceptar un trackeo
+<del>## Aceptar un trackeo
 
-Para poder ver a un usuario y su recorrido en la consola de Aleph es necesario que el mismo tenga un trackeo activo, el cual puede ser aceptado a través de la notificación de tipo Tracking
+Para poder ver a un usuario y su recorrido en la consola de Aleph es necesario que el mismo tenga un trackeo activo, el cual puede ser aceptado a través de la notificación de tipo Tracking</del>
 
 usando la funcion acceptTracking(id = id), propia del SDK de Aleph
