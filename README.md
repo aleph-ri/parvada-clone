@@ -169,3 +169,11 @@ donde this, es un objeto context
 Para poder ver a un usuario y su recorrido en la consola de Aleph es necesario que el mismo tenga un trackeo activo, el cual puede ser aceptado a través de la notificación de tipo Tracking</del>
 
 usando la funcion acceptTracking(id = id), propia del SDK de Aleph
+
+### Cerrar sesión del usuario
+Es un método simple de llamar, simplemente con lo siguiente, retornará un boolean dependiendo si se pudo o no efecturar dicha operación
+
+```jsx
+alephSDK.logout()
+```
+
